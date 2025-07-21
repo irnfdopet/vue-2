@@ -1,9 +1,11 @@
 <template>
-    <section class="section-data-model">
-        <input v-model="message" placeholder="edit me">
-        <input v-model.lazy="message" placeholder="edit me (lazy)">
-        <p>Message is: {{ message }}</p>
-    </section>
+    <div class="container">
+        <section class="section-data-model">
+            <input v-model="message" placeholder="edit me">
+            <input v-model.lazy="message" placeholder="edit me (lazy)">
+            <p>Message is: {{ message }}</p>
+        </section>
+    </div>
 </template>
 
 <script>

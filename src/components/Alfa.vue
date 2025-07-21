@@ -1,10 +1,12 @@
 <template>
-    <section class="section-alfa">
-        <button @click="a++">A+</button>
-        <button v-on:click="b++">B+</button>
-        <div>Count with age +: {{ incrementCountWithAge }}</div>
-        <div>Count with age -: {{ decrementCountWithAge }}</div>
-    </section>
+    <div class="container">
+        <section class="section-alfa">
+            <button @click="a++">A+</button>
+            <button v-on:click="b++">B+</button>
+            <div>Count with age +: {{ incrementCountWithAge }}</div>
+            <div>Count with age -: {{ decrementCountWithAge }}</div>
+        </section>
+    </div>
 </template>
 
 <script>
