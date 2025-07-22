@@ -13,6 +13,7 @@
                         <ul class="navbar-nav ml-auto">
                             <v-link href="/">Home</v-link>
                             <v-link href="/about">About</v-link>
+                            <v-link href="/posts">Posts</v-link>
                         </ul>
                     </div>
                 </div>
