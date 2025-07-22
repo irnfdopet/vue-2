@@ -11,7 +11,7 @@
       </section>
 
       <section>
-        <h1>{{ pageTitle }}</h1>
+        <v-heading :options="{ level: 1, class: 'my-5', attrs: { id: 'page-title' } }">{{ pageTitle }}</v-heading>
         <PostsTable />
       </section>
     </div>
@@ -22,6 +22,7 @@
 import '@vetstoria/design-system';
 import MainLayout from '@/layouts/Main.vue';
 import PostsTable from '@/components/PostsTable.vue';
+import TypoHeading from '@/components/typo/heading.vue';
 
 export default {
   name: 'PostsPage',
@@ -38,7 +39,8 @@ export default {
   },
   components: {
     MainLayout,
-    PostsTable
+    PostsTable,
+    'v-heading': TypoHeading,
   },
 }
 </script>

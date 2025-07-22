@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import routes from './routes'
+import { VetstoriaComponents } from '@vetstoria/ui-components';
 
 Vue.use(Vuex)
+Vue.use(VetstoriaComponents);
 
 const store = new Vuex.Store({
   state: {

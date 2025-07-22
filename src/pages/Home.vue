@@ -15,10 +15,10 @@
 
 <script>
 import '@vetstoria/design-system';
-import Alfa from '@/components/Alfa.vue';
-import Axis from '@/components/Axis.vue';
-import Counter from '@/components/Counter.vue';
-import DataModel from '@/components/DataModel.vue';
+import Alfa from '@/sections/Alfa.vue';
+import Axis from '@/sections/Axis.vue';
+import Counter from '@/sections/Counter.vue';
+import DataModel from '@/sections/DataModel.vue';
 import MainLayout from '@/layouts/Main.vue';
 
 export default {

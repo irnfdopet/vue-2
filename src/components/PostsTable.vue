@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table class="table">
+    <table class="vs-table">
       <thead>
         <tr>
           <th>ID</th>
@@ -16,16 +16,31 @@
         </tr>
       </tbody>
     </table>
-    <nav>
+    <nav class="mt-4">
       <ul class="pagination">
         <li class="page-item" :class="{ disabled: currentPage === 1 }">
-          <a class="page-link" @click="prevPage">Previous</a>
+          <v-button :id="null" primary :secondary="false" :tertiary="false" :iconInlined="false" :icon="null"
+            :iconStacked="false" :linkButton="false" :danger="false" :textButton="false" :disabled="false"
+            :selected="false" :state="null" ariaLabel="" :ariaExpanded="null" :role="null" :dashed="false"
+            :default="null" @onClick="prevPage">
+            Previous
+          </v-button>
         </li>
         <li class="page-item" v-for="page in totalPages" :key="page" :class="{ active: page === currentPage }">
-          <a class="page-link" @click="goToPage(page)">{{ page }}</a>
+          <v-button :id="null" :primary="false" secondary :tertiary="false" :iconInlined="false" :icon="null"
+            :iconStacked="false" :linkButton="false" :danger="false" :textButton="false" :disabled="false"
+            :selected="false" :state="null" ariaLabel="" :ariaExpanded="null" :role="null" :dashed="false"
+            :default="null" @onClick="goToPage(page)">
+            {{ page }}
+          </v-button>
         </li>
         <li class="page-item" :class="{ disabled: currentPage === totalPages }">
-          <a class="page-link" @click="nextPage">Next</a>
+          <v-button :id="null" primary :secondary="false" :tertiary="false" :iconInlined="false" :icon="null"
+            :iconStacked="false" :linkButton="false" :danger="false" :textButton="false" :disabled="false"
+            :selected="false" :state="null" ariaLabel="" :ariaExpanded="null" :role="null" :dashed="false"
+            :default="null" @onClick="nextPage">
+            Next
+          </v-button>
         </li>
       </ul>
     </nav>
@@ -33,6 +48,8 @@
 </template>
 
 <script>
+import { VButton } from '@vetstoria/ui-components';
+
 export default {
   data() {
     return {
@@ -75,25 +92,19 @@ export default {
   mounted() {
     this.fetchPosts();
   },
+  components: {
+    'v-button': VButton,
+  },
 };
 </script>
 
 <style scoped>
-.table {
-  width: 100%;
-  margin-bottom: 1rem;
-  color: #212529;
-}
 .pagination {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
   padding-left: 0;
   border-radius: .25rem;
-}
-.page-item {
-  margin: 0 5px;
-}
-.page-link {
-  cursor: pointer;
+  gap: 1rem;
 }
 </style>

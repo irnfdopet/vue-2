@@ -13,6 +13,7 @@
                         <ul class="navbar-nav ml-auto">
                             <v-link href="/">Home</v-link>
                             <v-link href="/about">About</v-link>
+                            <v-link href="/components">Components</v-link>
                             <v-link href="/posts">Posts</v-link>
                         </ul>
                     </div>
@@ -22,8 +23,8 @@
         <main>
             <slot></slot>
         </main>
-        <footer>
-            footer
+        <footer class="text-center bg-dark text-white py-3">
+            Copyright &copy; 2025 Vue 2 Playground
         </footer>
     </div>
 </template>
@@ -39,6 +40,10 @@ export default {
 
 <style>
 main {
+    margin: 50px 0;
+}
+
+.default-card {
     margin: 50px 0;
 }
 </style>
