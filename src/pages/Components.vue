@@ -85,15 +85,14 @@
       <v-card-layout>
         <v-heading :options="{ level: 4, class: 'section-title', attrs: { id: 'section-title' } }">Post
           Carousel</v-heading>
-        <v-selection-carousel id="my-carousel" :slidesToShow="7" :slidesToScroll="7" :toggledSelections="false"
-          :swipeToSlide="false"
-          :itemList='posts'
-          :disabled="false" carouselAriaLabel="My Carousel" previousButtonAriaLabel="Previous"
-          nextButtonAriaLabel="Next" :responsiveSettingsSm='{ "slidesToShow": 1, "slidesToScroll": 5 }'
+        <v-selection-carousel id="post-carousel" :slidesToShow="3" :slidesToScroll="3" :toggledSelections="false"
+          :swipeToSlide="false" :itemList='posts' :disabled="false" carouselAriaLabel="My Carousel"
+          previousButtonAriaLabel="Previous" nextButtonAriaLabel="Next"
+          :responsiveSettingsSm='{ "slidesToShow": 1, "slidesToScroll": 5 }'
           :responsiveSettingsMd='{ "slidesToShow": 3, "slidesToScroll": 1 }'
           :responsiveSettingsLg='{ "slidesToShow": 5, "slidesToScroll": 1 }'
-          :responsiveSettingsXlg='{ "slidesToShow": 6, "slidesToScroll": 1 }' value="2021-11-01" :startingValue="null"
-          :itemRole="null" textForSelected="" :beforeChange="null" :input="null" />
+          :responsiveSettingsXlg='{ "slidesToShow": 6, "slidesToScroll": 1 }' value="1" :startingValue="null"
+          itemRole="null" textForSelected="" :beforeChange="null" :input="null" />
       </v-card-layout>
 
     </div>
@@ -112,7 +111,7 @@ export default {
     return {
       pageTitle: "Components Page",
       description: "This page provides information components our application.",
-      posts: []
+      posts: [{}]
     }
   },
   methods: {
@@ -120,16 +119,20 @@ export default {
       return `You are viewing the ${this.pageTitle}. ${this.description}`;
     },
     fetchPosts() {
-      fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')
+      fetch('https://jsonplaceholder.typicode.com/posts?_limit=20')
         .then(response => response.json())
         .then(data => {
-          console.log("data ", data);
-          this.posts = data.map(post => ({
+          this.posts = data.map((post,index) => ({
             value: post.id,
             label: post.title,
-            ariaLabel: `Post ${post.id}: ${post.title}`
+            ariaLabel: `Post ${post.id}: ${post.title}`,
+            image: {
+              url: 'https://placehold.co/600',
+              alt: `Post ${post.title}`,
+            },
+            displayOrder: index,
+            available: true,
           }));
-          console.log("this.posts ", this.posts);
         })
         .catch(error => console.error('Error fetching posts:', error));
     },
@@ -148,9 +151,6 @@ export default {
   },
   mounted() {
     this.fetchPosts();
-  },
-  beforeMount() {
-    console.log("posts ", this.posts);
   }
 }
 </script>
