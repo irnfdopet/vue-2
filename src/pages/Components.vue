@@ -56,22 +56,6 @@
               Check me out
             </v-checkbox>
           </div>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Upload file</label>
-            <v-file-uploader id="fileUploader" buttonText="Browse Files"
-              :config='{ "url": "", "headers": { "test": "testvalue" }, "response": { "idField": "fileId" } }'
-              :fileList="[]">
-              <p class="col">
-                PDF,JPEG and PNG
-                <span class="svg-circle">
-                  <svg xmlns="http://www.w3.org/2000/svg" width=" 4" height="9" viewBox="0 0 4 4" fill="none">
-                    <circle cx="2" cy="2" r="2" fill="#7D7E8F" />
-                  </svg>
-                </span>
-                Total file size 15MB, up to 5 files
-              </p>
-            </v-file-uploader>
-          </div>
           <v-loading-indicator id="v-loading-indicator" message="Saving" />
           <v-button type="submit" id="submit" :primary="false" :secondary="false" :tertiary="false" iconInlined
             icon="time-slot" :iconStacked="false" :linkButton="false" :danger="false" :textButton="false"
@@ -81,6 +65,37 @@
           </v-button>
         </form>
       </v-card-layout>
+
+      <!-- Default Carousel -->
+      <v-card-layout>
+        <v-heading :options="{ level: 4, class: 'section-title', attrs: { id: 'section-title' } }">Default
+          Carousel</v-heading>
+        <v-selection-carousel id="my-carousel" :slidesToShow="7" :slidesToScroll="7" :toggledSelections="false"
+          :swipeToSlide="false"
+          :itemList='[{ "value": "2021-11-01", "label": "Mon Nov 01", "ariaLabel": "Monday November 1st" }, { "value": "2021-11-02", "label": "Tue Nov 02", "ariaLabel": "Tuesday November 2nd" }, { "value": "2021-11-03", "label": "Wed Nov 03", "ariaLabel": "Wednesday November 3rd" }, { "value": "2021-11-04", "label": "Thu Nov 04", "ariaLabel": "Thursday November 4th" }, { "value": "2021-11-05", "label": "Fri Nov 05", "ariaLabel": "Friday November 5th" }, { "value": "2021-11-06", "label": "Sat Nov 06", "ariaLabel": "Saturday November 6th" }, { "value": "2021-11-07", "label": "Sun Nov 07", "ariaLabel": "Sunday November 7th" }, { "value": "2021-11-08", "label": "Mon Nov 08", "ariaLabel": "Monday November 8th" }, { "value": "2021-11-09", "label": "Tue Nov 09", "ariaLabel": "Tuesday November 9th" }, { "value": "2021-11-10", "label": "Wed Nov 10", "ariaLabel": "Wednesday November 10th" }, { "value": "2021-11-11", "label": "Thu Nov 11", "ariaLabel": "Thursday November 11th" }, { "value": "2021-11-12", "label": "Fri Nov 12", "ariaLabel": "Friday November 12th" }, { "value": "2021-11-13", "label": "Sat Nov 13", "ariaLabel": "Saturday November 13th" }, { "value": "2021-11-14", "label": "Sun Nov 14", "ariaLabel": "Sunday November 14th" }, { "value": "2021-11-15", "label": "Mon Nov 15", "ariaLabel": "Monday November 15th" }, { "value": "2021-11-16", "label": "Tue Nov 16", "ariaLabel": "Tuesday November 16th" }, { "value": "2021-11-17", "label": "Wed Nov 17", "ariaLabel": "Wednesday November 17th" }, { "value": "2021-11-18", "label": "Thu Nov 18", "ariaLabel": "Thursday November 18th" }, { "value": "2021-11-19", "label": "Fri Nov 19", "ariaLabel": "Friday November 19th" }, { "value": "2021-11-20", "label": "Sat Nov 20", "ariaLabel": "Saturday November 20th" }]'
+          :disabled="false" carouselAriaLabel="My Carousel" previousButtonAriaLabel="Previous"
+          nextButtonAriaLabel="Next" :responsiveSettingsSm='{ "slidesToShow": 1, "slidesToScroll": 5 }'
+          :responsiveSettingsMd='{ "slidesToShow": 3, "slidesToScroll": 1 }'
+          :responsiveSettingsLg='{ "slidesToShow": 5, "slidesToScroll": 1 }'
+          :responsiveSettingsXlg='{ "slidesToShow": 6, "slidesToScroll": 1 }' value="2021-11-01" :startingValue="null"
+          :itemRole="null" textForSelected="" :beforeChange="null" :input="null" />
+      </v-card-layout>
+
+      <!-- Post Carousel -->
+      <v-card-layout>
+        <v-heading :options="{ level: 4, class: 'section-title', attrs: { id: 'section-title' } }">Post
+          Carousel</v-heading>
+        <v-selection-carousel id="my-carousel" :slidesToShow="7" :slidesToScroll="7" :toggledSelections="false"
+          :swipeToSlide="false"
+          :itemList='posts'
+          :disabled="false" carouselAriaLabel="My Carousel" previousButtonAriaLabel="Previous"
+          nextButtonAriaLabel="Next" :responsiveSettingsSm='{ "slidesToShow": 1, "slidesToScroll": 5 }'
+          :responsiveSettingsMd='{ "slidesToShow": 3, "slidesToScroll": 1 }'
+          :responsiveSettingsLg='{ "slidesToShow": 5, "slidesToScroll": 1 }'
+          :responsiveSettingsXlg='{ "slidesToShow": 6, "slidesToScroll": 1 }' value="2021-11-01" :startingValue="null"
+          :itemRole="null" textForSelected="" :beforeChange="null" :input="null" />
+      </v-card-layout>
+
     </div>
   </MainLayout>
 </template>
@@ -89,20 +104,35 @@
 import '@vetstoria/design-system';
 import MainLayout from '@/layouts/Main.vue';
 import TypoHeading from '@/components/typo/heading.vue';
-import { VCardlayout, VButton, VInput, VFormGroup, VAlert, VCheckbox, VFileUploader, VLoadingIndicator } from '@vetstoria/ui-components';
+import { VCardlayout, VButton, VInput, VFormGroup, VAlert, VCheckbox, VLoadingIndicator, VSelectionCarousel } from '@vetstoria/ui-components';
 
 export default {
   name: 'ComponentsPage',
   data() {
     return {
       pageTitle: "Components Page",
-      description: "This page provides information components our application."
+      description: "This page provides information components our application.",
+      posts: []
     }
   },
   methods: {
     aboutMsg() {
       return `You are viewing the ${this.pageTitle}. ${this.description}`;
-    }
+    },
+    fetchPosts() {
+      fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')
+        .then(response => response.json())
+        .then(data => {
+          console.log("data ", data);
+          this.posts = data.map(post => ({
+            value: post.id,
+            label: post.title,
+            ariaLabel: `Post ${post.id}: ${post.title}`
+          }));
+          console.log("this.posts ", this.posts);
+        })
+        .catch(error => console.error('Error fetching posts:', error));
+    },
   },
   components: {
     MainLayout,
@@ -113,8 +143,14 @@ export default {
     'v-form-group': VFormGroup,
     'v-alert': VAlert,
     'v-checkbox': VCheckbox,
-    'v-file-uploader': VFileUploader,
-    'v-loading-indicator': VLoadingIndicator
+    'v-loading-indicator': VLoadingIndicator,
+    'v-selection-carousel': VSelectionCarousel
   },
+  mounted() {
+    this.fetchPosts();
+  },
+  beforeMount() {
+    console.log("posts ", this.posts);
+  }
 }
 </script>

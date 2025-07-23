@@ -1,5 +1,5 @@
 <template>
-  <component :is="headingTag" :class="mergedClass" v-bind="options.attrs || null">
+  <component :is="headingTag" :class="mergedClass" v-bind="options.attrs || null" style="word-break: break-all;">
     <slot />
   </component>
 </template>
