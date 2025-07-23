@@ -10,7 +10,7 @@
         </nav>
       </section>
 
-      <v-heading :options="{ level: 1, class: 'my-5', attrs: { id: 'page-title' } }">Components</v-heading>
+      <v-heading :options="{ level: 1, attrs: { id: 'page-title' } }">Components</v-heading>
 
       <!-- Button -->
       <v-card-layout>

@@ -23,7 +23,7 @@
         <v-card-layout>
             <div>
                 <v-heading
-                    :options="{ level: 2, class: 'section-title', attrs: { id: 'section-title' } }">Count from
+                    :options="{ level: 3, class: 'section-title', attrs: { id: 'section-title' } }">Count from
                     store</v-heading>
                 <span class="vs_badges secondary-badge d-block mb-3">Count: {{ this.$store.state.count }}</span>
                 <div class="d-flex justify-content-between mb-3">

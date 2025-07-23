@@ -19,10 +19,7 @@
     <nav class="mt-4">
       <ul class="pagination">
         <li class="page-item" :class="{ disabled: currentPage === 1 }">
-          <v-button :id="null" primary :secondary="false" :tertiary="false" :iconInlined="false" :icon="null"
-            :iconStacked="false" :linkButton="false" :danger="false" :textButton="false" :disabled="false"
-            :selected="false" :state="null" ariaLabel="" :ariaExpanded="null" :role="null" :dashed="false"
-            :default="null" @onClick="prevPage">
+          <v-button id="page-prev" primary @onClick="prevPage" :disabled="prevButtonState">
             Previous
           </v-button>
         </li>
@@ -35,10 +32,7 @@
           </v-button>
         </li>
         <li class="page-item" :class="{ disabled: currentPage === totalPages }">
-          <v-button :id="null" primary :secondary="false" :tertiary="false" :iconInlined="false" :icon="null"
-            :iconStacked="false" :linkButton="false" :danger="false" :textButton="false" :disabled="false"
-            :selected="false" :state="null" ariaLabel="" :ariaExpanded="null" :role="null" :dashed="false"
-            :default="null" @onClick="nextPage">
+          <v-button id="page-next" primary @onClick="nextPage" :disabled="nextButtonState">
             Next
           </v-button>
         </li>
@@ -66,6 +60,12 @@ export default {
       const start = (this.currentPage - 1) * this.postsPerPage;
       return this.posts.slice(start, start + this.postsPerPage);
     },
+    prevButtonState() {
+      return this.currentPage === 1;
+    },
+    nextButtonState() {
+      return this.currentPage === this.totalPages;
+    }
   },
   methods: {
     fetchPosts() {

@@ -1,5 +1,5 @@
 <template>
-  <component :is="headingTag" :class="options.class || null" v-bind="options.attrs || null">
+  <component :is="headingTag" :class="mergedClass" v-bind="options.attrs || null">
     <slot />
   </component>
 </template>
@@ -29,6 +29,17 @@ export default {
 
       // Default to 'h1'
       return 'h1';
+    },
+    mergedClass() {
+      // Merge default classes with user classes (array or string)
+      const defaultClasses = ['mt-2', 'mb-4'];
+      if (Array.isArray(this.options.class)) {
+        return [...defaultClasses, ...this.options.class];
+      }
+      if (typeof this.options.class === 'string' && this.options.class) {
+        return [...defaultClasses, this.options.class];
+      }
+      return defaultClasses;
     }
   }
 }

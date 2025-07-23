@@ -10,7 +10,7 @@
         </nav>
       </section>
 
-      <v-heading :options="{ level: 1, class: 'my-5', attrs: { id: 'page-title' } }">{{ pageTitle }}</v-heading>
+      <v-heading :options="{ level: 1, attrs: { id: 'page-title' } }">{{ pageTitle }}</v-heading>
 
       <!-- Form -->
       <v-card-layout>
@@ -47,7 +47,7 @@
       </v-card-layout>
 
       <section>
-        <v-heading :options="{ level: 4, class: 'mb-4', attrs: { id: 'section-title' } }">Posts</v-heading>
+        <v-heading :options="{ level: 4, attrs: { id: 'section-title' } }">Posts</v-heading>
         <PostsTable />
       </section>
     </div>
